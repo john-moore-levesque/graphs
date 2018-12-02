@@ -2,10 +2,11 @@ import edge
 
 
 class Node():
-    def __init__(self, name, data=None):
+    def __init__(self, name, data=None, graph=None):
         self.name = name
         self.neighbors = {}
         self.data = data
+        self.setGraph(graph)
 
     def hasNeighbor(self, node):
         '''
@@ -62,3 +63,21 @@ class Node():
         return the node name
         '''
         return self.name
+
+    def getGraph(self):
+        '''
+        return the graph the node is part of
+        '''
+        return self.graph
+
+    def setGraph(self, graph):
+        '''
+        set the graph the node is part of
+        '''
+        self.graph = graph
+
+    def unsetGraph(self):
+        '''
+        unset the graph
+        '''
+        self.graph = None
