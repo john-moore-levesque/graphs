@@ -15,6 +15,7 @@ class Graph():
         if n.getName() not in self.nodes:
             self.nodes[n.getName()] = n
             self.addEdge(n)
+            n.setGraph(self)
         return True
 
     def addEdge(self, n):
@@ -43,6 +44,7 @@ class Graph():
         if n.getName() in self.nodes:
             self.pop(n.getName())
             self.removeEdge(n)
+            n.unsetGraph()
         return True
 
     def removeEdge(self, n):
@@ -59,3 +61,16 @@ class Graph():
         return a random node; mostly used for testing search functions
         '''
         return random.choice(list(self.nodes.keys()))
+
+
+def mergeGraph(graph1, graph2):
+    newGraph = Graph(name="%s %s" %(graph1.name, graph2.name),
+                directed=(graph1.directed and graph2.directed))
+    if (not graph1.directed and not graph2.directed) or (graph1.directed and graph2.directed):
+        newGraph.nodes = {**graph1.nodes, **graph2.nodes}
+        newGraph.edges = {**graph1.edges, **graph2.edges}
+    else:
+        # have to implement this
+        # for now just
+        pass
+    return newGraph
