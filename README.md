@@ -8,3 +8,6 @@ Implements
 
 To Do
 * prioritize edge weight for search functions
+
+Family Tree
+* Family tree branch uses graph data structure to implement family tree
